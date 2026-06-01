@@ -1,6 +1,6 @@
 PROVIDER_DIRS := $(sort $(patsubst %/go.mod,%,$(wildcard *-provider/go.mod)))
 
-IMAGE_REPOSITORY ?= ghcr.io/obot-platform/obot-providers
+IMAGE_REPOSITORY ?= ghcr.io/obot-platform/providers
 IMAGE_TAG ?= main
 IMAGE_PLATFORMS ?=
 IMAGE_PUSH ?= false

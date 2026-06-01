@@ -16,11 +16,11 @@ RUN --mount=type=cache,target=/root/.cache/go-build \
     cd "${PROVIDER_DIR}" \
     && CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /out/bin/provider .
 
-RUN mkdir -p "/out/obot-tools/${PROVIDER_DIR}/bin" \
-    && cp /out/bin/provider "/out/obot-tools/${PROVIDER_DIR}/bin/provider" \
+RUN mkdir -p "/out/provider/${PROVIDER_DIR}/bin" \
+    && cp /out/bin/provider "/out/provider/${PROVIDER_DIR}/bin/provider" \
     && if [ -d auth-providers-common/templates ]; then \
-        mkdir -p /out/obot-tools/auth-providers-common/templates; \
-        cp -R auth-providers-common/templates/. /out/obot-tools/auth-providers-common/templates/; \
+        mkdir -p /out/provider/auth-providers-common/templates; \
+        cp -R auth-providers-common/templates/. /out/provider/auth-providers-common/templates/; \
     fi
 
 FROM cgr.dev/chainguard/wolfi-base
@@ -30,7 +30,7 @@ RUN apk upgrade --no-cache && apk add --no-cache ca-certificates
 ARG PROVIDER_DIR
 ENV PORT=8000
 
-COPY --from=build /out/obot-tools /obot-tools
+COPY --from=build /out/provider /provider
 
 EXPOSE 8000 9999
 ENTRYPOINT ["/bin/provider"]

@@ -24,6 +24,8 @@ jobs:
       cancel-in-progress: true
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Set up Depot CLI
         uses: depot/setup-action@v1
@@ -62,5 +64,5 @@ jobs:
         run: |
           set -e
           for provider_dir in $(make -s provider-dirs); do
-            cosign sign --yes "ghcr.io/obot-platform/obot-tools/${provider_dir}:${IMAGE_TAG}"
+            cosign sign --yes "ghcr.io/obot-platform/providers/${provider_dir}:${IMAGE_TAG}"
           done

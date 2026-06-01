@@ -23,19 +23,3 @@ jobs:
 
       - name: Run tests
         run: make test
-
-      - name: Run build
-        run: make build
-
-  image-build:
-    runs-on: depot-ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Build Docker image
-        uses: depot/build-push-action@v1
-        with:
-          project: bbqjs4tj1g
-          context: .
-          platforms: linux/amd64,linux/arm64
-          target: tools
