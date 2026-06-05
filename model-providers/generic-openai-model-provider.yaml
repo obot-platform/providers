@@ -1,7 +1,7 @@
 name: "OpenAI Compatible Generic Provider"
-image: "ghcr.io/obot-platform/providers/generic-openai-model-provider:main"
-port: 8000
-path: "/"
+command: "generic-openai-model-provider/bin/obot-provider"
+validateArgs:
+  - validate
 icon: "/admin/assets/obot_openai_antenna_icon.png"
 iconDark: "/admin/assets/obot_openai_antenna_icon.png"
 description: "Model Provider for generic [OpenAI API compatible](https://platform.openai.com/docs/api-reference/introduction) model providers, like LM-Studio, Ollama, vLLM, etc."

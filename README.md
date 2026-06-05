@@ -1,4 +1,4 @@
-# Tools
+# Providers
 The home of official Obot providers
 
 ## Issues

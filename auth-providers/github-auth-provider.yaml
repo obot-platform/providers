@@ -1,7 +1,5 @@
 name: "GitHub"
-image: "ghcr.io/obot-platform/providers/github-auth-provider:main"
-port: 8000
-path: "/"
+command: "github-auth-provider/bin/obot-provider"
 icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/github.svg"
 description: "Auth provider for GitHub"
 link: "https://github.com/"

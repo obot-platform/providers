@@ -1,7 +1,7 @@
 name: "Groq"
-image: "ghcr.io/obot-platform/providers/groq-model-provider:main"
-port: 8000
-path: "/"
+command: "groq-model-provider/bin/obot-provider"
+validateArgs:
+  - validate
 icon: "/admin/assets/groq_logo.svg"
 description: "Model provider for models running on Groq"
 link: "https://groq.com/"

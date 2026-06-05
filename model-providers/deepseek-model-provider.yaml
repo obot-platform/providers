@@ -1,7 +1,7 @@
 name: "DeepSeek"
-image: "ghcr.io/obot-platform/providers/deepseek-model-provider:main"
-port: 8000
-path: "/"
+command: "deepseek-model-provider/bin/obot-provider"
+validateArgs:
+  - validate
 icon: "/admin/assets/deepseek-logo.svg"
 iconDark: "/admin/assets/deepseek-logo.svg"
 description: "Model Provider for DeepSeek"

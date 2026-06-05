@@ -1,7 +1,7 @@
 name: "vLLM"
-image: "ghcr.io/obot-platform/providers/vllm-model-provider:main"
-port: 8000
-path: "/"
+command: "vllm-model-provider/bin/obot-provider"
+validateArgs:
+  - validate
 icon: "/admin/assets/vllm-logo.svg"
 iconDark: "/admin/assets/vllm-logo.svg"
 description: "Model Provider for vLLM"

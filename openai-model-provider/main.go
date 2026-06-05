@@ -31,6 +31,14 @@ func main() {
 		CustomPathHandleFuncs: map[string]http.HandlerFunc{},
 	}
 
+	if err := cfg.Validate(); err != nil {
+		os.Exit(1)
+	}
+
+	if len(os.Args) > 1 && os.Args[1] == "validate" {
+		return
+	}
+
 	openaiProxy := openaiproxy.NewServer(cfg)
 	cfg.CustomPathHandleFuncs["/v1/"] = (&httputil.ReverseProxy{
 		Director: openaiProxy.Openaiv1ProxyRedirect,

@@ -1,0 +1,64 @@
+name: Build providers
+
+permissions:
+  id-token: write
+  contents: read
+  packages: write
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+    tags:
+      - "v*"
+
+jobs:
+  oss-providers-build:
+    runs-on: depot-ubuntu-22.04
+    concurrency:
+      group: oss-providers-build
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and Push Docker image
+        uses: depot/build-push-action@v1
+        id: build-and-push
+        with:
+          project: bbqjs4tj1g
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          pull: true
+          target: providers
+          platforms: linux/amd64,linux/arm64
+          tags: |
+            ${{ github.ref_type == 'tag' && format('ghcr.io/obot-platform/providers:{0}', github.ref_name) || format('ghcr.io/{0}:latest', github.repository) }}
+
+      - name: Install Cosign
+        if: github.event_name != 'pull_request'
+        uses: sigstore/cosign-installer@v3.8.1
+        with:
+          cosign-release: "v2.4.3"
+
+      - name: Sign Images
+        if: github.event_name != 'pull_request'
+        env:
+          DIGEST: ${{ steps.build-and-push.outputs.digest }}
+          TAGS: ${{ github.ref_type == 'tag' && format('ghcr.io/obot-platform/providers:{0}', github.ref_name) || format('ghcr.io/{0}:latest', github.repository) }}
+        run: |
+          images=""
+          for tag in ${TAGS}; do
+            images+="${tag}@${DIGEST} "
+          done
+          cosign sign --yes ${images}

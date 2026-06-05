@@ -7,6 +7,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/obot-platform/providers/openai-model-provider/api"
@@ -19,13 +20,13 @@ type upstreamErrorResponse struct {
 }
 
 func handleValidationError(err error, msg string) error {
+	log.Printf("ERROR Invalid: %v", err)
 	if msg == "" && err != nil {
 		msg = err.Error()
 	}
-	if err != nil {
-		log.Printf("ERROR Invalid: %v", err)
-	} else {
-		log.Printf("ERROR Invalid: %s", msg)
+	errorJSON := map[string]string{"error": msg}
+	if encErr := json.NewEncoder(os.Stdout).Encode(errorJSON); encErr != nil {
+		return encErr
 	}
 	return errors.New(msg)
 }

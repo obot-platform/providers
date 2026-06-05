@@ -1,7 +1,7 @@
 name: "xAI"
-image: "ghcr.io/obot-platform/providers/xai-model-provider:main"
-port: 8000
-path: "/"
+command: "xai-model-provider/bin/obot-provider"
+validateArgs:
+  - validate
 icon: "/admin/assets/xai-logo.svg"
 description: "Model Provider for xAI"
 link: "https://x.ai/"

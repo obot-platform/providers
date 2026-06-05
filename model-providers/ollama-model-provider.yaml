@@ -1,7 +1,7 @@
 name: "Ollama"
-image: "ghcr.io/obot-platform/providers/ollama-model-provider:main"
-port: 8000
-path: "/"
+command: "ollama-model-provider/bin/obot-provider"
+validateArgs:
+  - validate
 icon: "https://ollama.com/public/ollama.png"
 description: "Model provider for models running on Ollama"
 link: "https://ollama.com/"

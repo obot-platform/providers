@@ -37,6 +37,14 @@ func main() {
 		Name:                 "xAI",
 	}
 
+	if err := cfg.Validate(); err != nil {
+		os.Exit(1)
+	}
+
+	if len(os.Args) > 1 && os.Args[1] == "validate" {
+		return
+	}
+
 	if err := proxy.Run(cfg); err != nil {
 		panic(err)
 	}

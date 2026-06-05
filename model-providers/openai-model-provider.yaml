@@ -1,7 +1,7 @@
 name: "OpenAI"
-image: "ghcr.io/obot-platform/providers/openai-model-provider:main"
-port: 8000
-path: "/"
+command: "openai-model-provider/bin/obot-provider"
+validateArgs:
+  - validate
 icon: "https://cdn.jsdelivr.net/npm/@phosphor-icons/core@2/assets/duotone/open-ai-logo-duotone.svg"
 description: "Model Provider for OpenAI"
 link: "https://openai.com/"

@@ -1,36 +1,44 @@
 # syntax=docker/dockerfile:1
+FROM cgr.dev/chainguard/wolfi-base AS base
 
-FROM cgr.dev/chainguard/wolfi-base AS build
+RUN apk upgrade --no-cache && apk add --no-cache go-1.26 make git curl
 
-RUN apk upgrade --no-cache && apk add --no-cache go-1.26 ca-certificates
+FROM base AS providers-builder
+WORKDIR /obot-providers/providers
+COPY . /obot-providers/providers
+RUN --mount=type=cache,target=/root/.cache/go-build \
+    --mount=type=cache,target=/root/go/pkg/mod \
+    BIN_DIR=/bin make package-providers && \
+    mkdir -p /providers-runtime/obot-providers/providers && \
+    cp -a /obot-providers/.envrc.providers.providers /providers-runtime/obot-providers/ && \
+    cp -a /obot-providers/providers/auth-providers /providers-runtime/obot-providers/providers/ && \
+    cp -a /obot-providers/providers/model-providers /providers-runtime/obot-providers/providers/ && \
+    for bin_dir in /obot-providers/providers/*-provider/bin; do \
+        provider_dir="$(dirname "${bin_dir}")"; \
+        dest="/providers-runtime/obot-providers/providers/$(basename "${provider_dir}")"; \
+        mkdir -p "${dest}"; \
+        cp -a "${bin_dir}" "${dest}/"; \
+    done
 
-ARG PROVIDER_DIR
-WORKDIR /src
-COPY . .
+FROM base AS providers
+WORKDIR /obot-providers/providers
+COPY --from=providers-builder /providers-runtime/obot-providers/ /obot-providers/
 
-RUN test -n "${PROVIDER_DIR}" \
-    && test -f "${PROVIDER_DIR}/go.mod"
+FROM base AS encryption-bins-builder
+WORKDIR /obot-providers
+COPY ./Makefile /obot-providers/
+COPY ./scripts/package-encryption-bins.sh /obot-providers/scripts/
 
 RUN --mount=type=cache,target=/root/.cache/go-build \
     --mount=type=cache,target=/root/go/pkg/mod \
-    cd "${PROVIDER_DIR}" \
-    && CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /out/bin/provider .
+    BIN_DIR=/obot-providers/bin make package-encryption-bins && \
+    mkdir -p /encryption-bins-runtime/bin /encryption-bins-runtime/obot-providers && \
+    cp -a /obot-providers/.envrc.providers.encryption-bins /encryption-bins-runtime/obot-providers/ && \
+    cp -a /obot-providers/bin/aws-encryption-provider /encryption-bins-runtime/bin/ && \
+    cp -a /obot-providers/bin/azure-encryption-provider /encryption-bins-runtime/bin/ && \
+    cp -a /obot-providers/bin/gcp-encryption-provider /encryption-bins-runtime/bin/
 
-RUN mkdir -p "/out/provider/bin" \
-    && cp /out/bin/provider "/out/provider/bin/provider" \
-    && if [ -d auth-providers-common/templates ]; then \
-        mkdir -p /out/provider/auth-providers-common/templates; \
-        cp -R auth-providers-common/templates/. /out/provider/auth-providers-common/templates/; \
-    fi
-
-FROM cgr.dev/chainguard/wolfi-base
-
-RUN apk upgrade --no-cache && apk add --no-cache ca-certificates
-
-ARG PROVIDER_DIR
-ENV PORT=8000
-
-COPY --from=build /out/provider /provider
-
-EXPOSE 8000 9999
-ENTRYPOINT ["/provider/bin/provider"]
+FROM base AS encryption-bins
+WORKDIR /obot-providers
+COPY --from=encryption-bins-builder /encryption-bins-runtime/bin/ /bin/
+COPY --from=encryption-bins-builder /encryption-bins-runtime/obot-providers/ /obot-providers/

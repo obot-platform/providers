@@ -1,7 +1,5 @@
 name: "Google"
-image: "ghcr.io/obot-platform/providers/google-auth-provider:main"
-port: 8000
-path: "/"
+command: "google-auth-provider/bin/obot-provider"
 icon: "/admin/assets/google_icon_small.png"
 iconDark: "/admin/assets/google_icon_small.png"
 description: "Auth provider for Google"
