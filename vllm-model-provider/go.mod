@@ -1,6 +1,6 @@
 module github.com/obot-platform/providers/vllm-model-provider
 
-go 1.26.3
+go 1.26.4
 
 replace github.com/obot-platform/providers/openai-model-provider => ../openai-model-provider
 
