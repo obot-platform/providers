@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"reflect"
+	"strconv"
 	"strings"
 )
 
@@ -55,6 +56,12 @@ func LoadEnvForStruct[T any](s *T) error {
 			} else {
 				return fmt.Errorf("unsupported slice element type %v for field %s", field.Type.Elem().Kind(), field.Name)
 			}
+		case reflect.Int:
+			v, err := strconv.ParseInt(value, 10, 64)
+			if err != nil {
+				return fmt.Errorf("invalid value for field %s: %w", field.Name, err)
+			}
+			fieldValue.SetInt(v)
 		case reflect.Pointer:
 			if field.Type.Elem().Kind() == reflect.String {
 				fieldValue.Set(reflect.ValueOf(&value))

@@ -27,6 +27,21 @@ optionalConfigurationParameters:
     description: "The connection string for a PostgreSQL database to use for session storage. If unset, cookies will be used for session storage instead."
     sensitive: true
     hidden: true
+  - name: "OBOT_AUTH_PROVIDER_POSTGRES_MAX_CONNECTIONS"
+    friendlyName: "PostgreSQL max connections"
+    description: "The maximum number of open connections to the PostgreSQL database."
+    sensitive: false
+    hidden: true
+  - name: "OBOT_AUTH_PROVIDER_POSTGRES_MAX_IDLE_CONNECTIONS"
+    friendlyName: "PostgreSQL max idle connections"
+    description: "The maximum number of idle connections to the PostgreSQL database."
+    sensitive: false
+    hidden: true
+  - name: "OBOT_AUTH_PROVIDER_POSTGRES_CONNECTION_LIFETIME_SECONDS"
+    friendlyName: "PostgreSQL connection lifetime"
+    description: "The maximum lifetime of a connection to the PostgreSQL database."
+    sensitive: false
+    hidden: true
   - name: "OBOT_AUTH_PROVIDER_TOKEN_REFRESH_DURATION"
     friendlyName: "Token Refresh Duration"
     description: "Time to wait before attempting to refresh auth tokens. Should be in a format like 1h1m1s. Default: 1h"
