@@ -16,7 +16,7 @@ on:
       - "v*"
 
 jobs:
-  oss-providers-build:
+  build:
     runs-on: depot-ubuntu-22.04
     concurrency:
       group: oss-providers-build
