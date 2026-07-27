@@ -1,0 +1,26 @@
+
+# Dependabot dependency ownership
+/anthropic-model-provider/go.mod @obot-platform/obot-backend
+/anthropic-model-provider/go.sum @obot-platform/obot-backend
+/auth-providers-common/go.mod @obot-platform/obot-backend
+/auth-providers-common/go.sum @obot-platform/obot-backend
+/deepseek-model-provider/go.mod @obot-platform/obot-backend
+/deepseek-model-provider/go.sum @obot-platform/obot-backend
+/generic-openai-model-provider/go.mod @obot-platform/obot-backend
+/generic-openai-model-provider/go.sum @obot-platform/obot-backend
+/generic-responses-model-provider/go.mod @obot-platform/obot-backend
+/generic-responses-model-provider/go.sum @obot-platform/obot-backend
+/github-auth-provider/go.mod @obot-platform/obot-backend
+/github-auth-provider/go.sum @obot-platform/obot-backend
+/google-auth-provider/go.mod @obot-platform/obot-backend
+/google-auth-provider/go.sum @obot-platform/obot-backend
+/groq-model-provider/go.mod @obot-platform/obot-backend
+/groq-model-provider/go.sum @obot-platform/obot-backend
+/ollama-model-provider/go.mod @obot-platform/obot-backend
+/ollama-model-provider/go.sum @obot-platform/obot-backend
+/openai-model-provider/go.mod @obot-platform/obot-backend
+/openai-model-provider/go.sum @obot-platform/obot-backend
+/vllm-model-provider/go.mod @obot-platform/obot-backend
+/vllm-model-provider/go.sum @obot-platform/obot-backend
+/xai-model-provider/go.mod @obot-platform/obot-backend
+/xai-model-provider/go.sum @obot-platform/obot-backend
