@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 FROM cgr.dev/chainguard/wolfi-base AS base
 
-RUN apk upgrade --no-cache && apk add --no-cache go-1.26 make git curl
+RUN apk upgrade --no-cache && apk add --no-cache bash go-1.27 make git curl
 
 FROM base AS providers-builder
 WORKDIR /obot-providers/providers
