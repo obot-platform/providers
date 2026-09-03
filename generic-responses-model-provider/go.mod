@@ -1,6 +1,6 @@
 module github.com/obot-platform/providers/generic-responses-model-provider
 
-go 1.26.4
+go 1.27
 
 replace github.com/obot-platform/providers/openai-model-provider => ../openai-model-provider
 
