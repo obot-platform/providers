@@ -1,0 +1,17 @@
+name: "Databricks"
+command: "databricks-model-provider/bin/obot-provider"
+validateArgs:
+  - validate
+icon: "https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/databricks.svg"
+description: "Model provider for Databricks-hosted foundation models"
+link: "https://www.databricks.com/"
+requiredConfigurationParameters:
+  - name: "OBOT_DATABRICKS_MODEL_PROVIDER_WORKSPACE_URL"
+    friendlyName: "Workspace URL"
+    description: "Databricks workspace URL (for example, dbc-xxxxxxxx-xxxx.cloud.databricks.com). HTTPS is used when the scheme is omitted."
+    sensitive: false
+  - name: "OBOT_DATABRICKS_MODEL_PROVIDER_TOKEN"
+    friendlyName: "Personal Access Token"
+    description: "Databricks personal access token with permission to list and query serving endpoints."
+    sensitive: true
+dialect: "OpenResponses"

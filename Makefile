@@ -4,6 +4,7 @@ build:
 test:
 	cd github-auth-provider && go test ./... && cd ..
 	cd google-auth-provider && go test ./... && cd ..
+	cd databricks-model-provider && go test ./... && cd ..
 
 package-providers:
 	./scripts/package-providers.sh
