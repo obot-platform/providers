@@ -2,8 +2,10 @@ build:
 	./scripts/build.sh
 
 test:
-	cd github-auth-provider && go test ./... && cd ..
-	cd google-auth-provider && go test ./... && cd ..
+	./scripts/test.sh
+
+vet:
+	./scripts/vet.sh
 
 package-providers:
 	./scripts/package-providers.sh

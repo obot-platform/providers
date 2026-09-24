@@ -1,5 +1,9 @@
 # Providers
-The home of official Obot providers
+The home of official Obot providers, including enterprise-gated authentication
+and model providers.
+
+Each provider is built as a standalone binary and packaged into the unified
+`ghcr.io/obot-platform/providers` image.
 
 `make build` produces static Go binaries with source paths, debug symbols, and
 linker build IDs removed. Set `CGO_ENABLED=1` if a local build requires cgo.

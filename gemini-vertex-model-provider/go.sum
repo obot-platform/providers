@@ -1,0 +1,6 @@
+cloud.google.com/go/compute/metadata v0.3.0 h1:Tz+eQXMEqDIKRsmY3cHTL6FVaynIjX2QxYC4trgAKZc=
+cloud.google.com/go/compute/metadata v0.3.0/go.mod h1:zFmK7XCadkQkj6TtorcaGlCW1hT1fIilQDwofLpJ20k=
+github.com/obot-platform/providers/openai-model-provider v0.0.0-20260605221712-d90e9d6df0eb h1:2Km/4qab309p6WWcEwPpCuUmf792xBu3DhWceYhBkLs=
+github.com/obot-platform/providers/openai-model-provider v0.0.0-20260605221712-d90e9d6df0eb/go.mod h1:I/k7SdnKOdeeMee7vU7ZwsJ1fLFJB6ayMdLKKux/bX4=
+golang.org/x/oauth2 v0.32.0 h1:jsCblLleRMDrxMN29H3z/k1KliIvpLgCkE6R8FXXNgY=
+golang.org/x/oauth2 v0.32.0/go.mod h1:lzm5WQJQwKZ3nwavOZ3IS5Aulzxi68dUSgRHujetwEA=
