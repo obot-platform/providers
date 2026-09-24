@@ -32,7 +32,7 @@ type UserInfo struct {
 // Uses the /api/v1/users/{userId}/groups endpoint with service account permissions.
 // Requires okta.users.read or okta.groups.read scope in the service account token.
 func FetchUserGroupInfos(ctx context.Context, client *okta.APIClient, userID string) (state.GroupInfoList, error) {
-	// Query user-specific groups endpoint (accepts user ID or login/email)
+	// Query user-specific groups endpoint (accepts user ID or login/email).
 	groups, resp, err := client.UserAPI.ListUserGroups(ctx, userID).Limit(oktaPageSize).Execute()
 	if err != nil {
 		return nil, fmt.Errorf("failed to fetch group memberships for user %s: %w", userID, err)

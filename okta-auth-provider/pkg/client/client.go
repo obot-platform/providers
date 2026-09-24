@@ -6,6 +6,15 @@ import (
 	"github.com/okta/okta-sdk-golang/v5/okta"
 )
 
+// Retries for a rate-limited request, and the cap on the wait between them. The SDK leaves both at
+// Go's zero value when unset, and neither zero value works: MaxRetries 0 stops the backoff before
+// its first retry, so a single 429 is fatal, and MaxBackoff 0 clamps the wait computed from Okta's
+// X-Rate-Limit-Reset header down to nothing.
+const (
+	oktaRateLimitMaxRetries        = 2
+	oktaRateLimitMaxBackoffSeconds = 30
+)
+
 // NewServiceClient creates an Okta API client using private key JWT authentication.
 // The SDK handles all token management automatically (JWT signing, token acquisition, caching, refresh).
 //
@@ -33,6 +42,8 @@ func NewServiceClient(clientID, privateKeyPEM, orgURL string, scopes []string) (
 		okta.WithClientId(clientID),
 		okta.WithScopes(scopes),
 		okta.WithPrivateKey(fixPEMFormat(privateKeyPEM)),
+		okta.WithRateLimitMaxRetries(oktaRateLimitMaxRetries),
+		okta.WithRateLimitMaxBackOff(oktaRateLimitMaxBackoffSeconds),
 		// WithPrivateKeyId is optional - only needed if you have multiple JWKs registered
 	)
 	if err != nil {
