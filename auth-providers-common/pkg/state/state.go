@@ -2,12 +2,16 @@ package state
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
 	"time"
 
 	oauth2proxy "github.com/oauth2-proxy/oauth2-proxy/v7"
 )
+
+// ErrInvalidSession means the session can no longer be used, and the user must log in again.
+var ErrInvalidSession = errors.New("invalid session")
 
 type GroupInfo struct {
 	ID      string  `json:"id"`
@@ -61,7 +65,7 @@ func ObotGetState(p *oauth2proxy.OAuthProxy) http.HandlerFunc {
 
 		ss, err := GetSerializableState(p, reqObj)
 		if err != nil {
-			http.Error(w, fmt.Sprintf("failed to get state: %v", err), http.StatusInternalServerError)
+			WriteStateError(w, err)
 			return
 		}
 
@@ -70,6 +74,16 @@ func ObotGetState(p *oauth2proxy.OAuthProxy) http.HandlerFunc {
 			return
 		}
 	}
+}
+
+// WriteStateError writes an error from GetSerializableState. An invalid session gets a 401, so that Obot knows to
+// clear the session cookie rather than fail the request.
+func WriteStateError(w http.ResponseWriter, err error) {
+	status := http.StatusInternalServerError
+	if errors.Is(err, ErrInvalidSession) {
+		status = http.StatusUnauthorized
+	}
+	http.Error(w, fmt.Sprintf("failed to get state: %v", err), status)
 }
 
 func GetSerializableState(p *oauth2proxy.OAuthProxy, r *http.Request) (SerializableState, error) {
@@ -86,7 +100,7 @@ func GetSerializableState(p *oauth2proxy.OAuthProxy, r *http.Request) (Serializa
 	if state.IsExpired() || (p.CookieOptions.Refresh != 0 && state.Age() > p.CookieOptions.Refresh) {
 		setCookies, err = refreshToken(p, r)
 		if err != nil {
-			return SerializableState{}, fmt.Errorf("failed to refresh token: %v", err)
+			return SerializableState{}, fmt.Errorf("failed to refresh token: %w", err)
 		}
 	}
 
@@ -124,7 +138,8 @@ func refreshToken(p *oauth2proxy.OAuthProxy, r *http.Request) ([]string, error) 
 		}
 		return headers, nil
 	case http.StatusUnauthorized, http.StatusForbidden:
-		return nil, fmt.Errorf("refreshing token returned %d: %s", w.status, w.body)
+		// oauth2-proxy rejected the session (and removes one that it fails to refresh), so the user must log in again.
+		return nil, fmt.Errorf("%w: refreshing token returned %d: %s", ErrInvalidSession, w.status, w.body)
 	default:
 		return nil, fmt.Errorf("refreshing token returned unexpected status %d: %s", w.status, w.body)
 	}

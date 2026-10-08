@@ -185,7 +185,7 @@ func getState(p *oauth2proxy.OAuthProxy) http.HandlerFunc {
 
 		ss, err := state.GetSerializableState(p, reqObj)
 		if err != nil {
-			http.Error(w, fmt.Sprintf("failed to get state: %v", err), http.StatusInternalServerError)
+			state.WriteStateError(w, err)
 			fmt.Printf("ERROR: github-auth-provider: failed to get state: %v\n", err)
 			return
 		}
