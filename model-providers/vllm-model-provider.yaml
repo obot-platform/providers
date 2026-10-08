@@ -5,14 +5,44 @@ validateArgs:
 icon: "/admin/assets/vllm-logo.svg"
 iconDark: "/admin/assets/vllm-logo.svg"
 description: "Model Provider for vLLM"
+locales:
+  ja:
+    name: "vLLM"
+    description: "vLLM のモデルプロバイダー"
+  ko:
+    name: "vLLM"
+    description: "vLLM 모델 공급자"
+  zh-CN:
+    name: "vLLM"
+    description: "vLLM 模型提供方"
 link: "https://docs.vllm.ai/"
 requiredConfigurationParameters:
   - name: "OBOT_VLLM_MODEL_PROVIDER_ENDPOINT"
     friendlyName: "Endpoint"
     description: "Endpoint for the vLLM OpenAI service (eg. http://localhost:8000)"
+    locales:
+      ja:
+        friendlyName: "エンドポイント"
+        description: "vLLM OpenAI サービスのエンドポイント（例: http://localhost:8000）。"
+      ko:
+        friendlyName: "엔드포인트"
+        description: "vLLM OpenAI 서비스의 엔드포인트입니다(예: http://localhost:8000)."
+      zh-CN:
+        friendlyName: "端点"
+        description: "vLLM OpenAI 服务的端点（例如 http://localhost:8000）。"
     sensitive: false
 optionalConfigurationParameters:
   - name: "OBOT_VLLM_MODEL_PROVIDER_API_KEY"
     friendlyName: "API Key"
     description: "VLLM API Key set when starting the vLLM server"
+    locales:
+      ja:
+        friendlyName: "API キー"
+        description: "vLLM サーバーの起動時に設定した API キー"
+      ko:
+        friendlyName: "API 키"
+        description: "vLLM 서버 시작 시 설정한 API 키"
+      zh-CN:
+        friendlyName: "API 密钥"
+        description: "启动 vLLM 服务器时设置的 API 密钥"
     sensitive: true

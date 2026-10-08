@@ -4,10 +4,30 @@ validateArgs:
   - validate
 icon: "https://cdn.jsdelivr.net/npm/@phosphor-icons/core@2/assets/duotone/open-ai-logo-duotone.svg"
 description: "Model Provider for OpenAI"
+locales:
+  ja:
+    name: "OpenAI"
+    description: "OpenAI のモデルプロバイダー"
+  ko:
+    name: "OpenAI"
+    description: "OpenAI 모델 공급자"
+  zh-CN:
+    name: "OpenAI"
+    description: "OpenAI 模型提供方"
 link: "https://openai.com/"
 requiredConfigurationParameters:
   - name: "OBOT_OPENAI_MODEL_PROVIDER_API_KEY"
     friendlyName: "API Key"
     description: "OpenAI API Key. Can be created and fetched from https://platform.openai.com/settings/organization/api-keys or https://platform.openai.com/api-keys"
+    locales:
+      ja:
+        friendlyName: "API キー"
+        description: "OpenAI API キー。https://platform.openai.com/settings/organization/api-keys または https://platform.openai.com/api-keys で作成、取得できます。"
+      ko:
+        friendlyName: "API 키"
+        description: "OpenAI API 키입니다. https://platform.openai.com/settings/organization/api-keys 또는 https://platform.openai.com/api-keys 에서 생성하고 확인할 수 있습니다."
+      zh-CN:
+        friendlyName: "API 密钥"
+        description: "OpenAI API 密钥。可在 https://platform.openai.com/settings/organization/api-keys 或 https://platform.openai.com/api-keys 创建和获取。"
     sensitive: true
 dialect: "OpenAIResponses"

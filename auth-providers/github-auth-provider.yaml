@@ -2,60 +2,190 @@ name: "GitHub"
 command: "github-auth-provider/bin/obot-provider"
 icon: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/github.svg"
 description: "Auth provider for GitHub"
+locales:
+  ja:
+    name: "GitHub"
+    description: "GitHub の認証プロバイダー"
+  ko:
+    name: "GitHub"
+    description: "GitHub 인증 공급자"
+  zh-CN:
+    name: "GitHub"
+    description: "GitHub 身份验证提供方"
 link: "https://github.com/"
 requiredConfigurationParameters:
   - name: "OBOT_GITHUB_AUTH_PROVIDER_CLIENT_ID"
     friendlyName: "Client ID"
     description: "Client ID for your GitHub OAuth app. Can be found in GitHub Developer Settings > OAuth Apps"
+    locales:
+      ja:
+        friendlyName: "クライアント ID"
+        description: "GitHub OAuth アプリのクライアント ID。GitHub Developer Settings > OAuth Apps で確認できます。"
+      ko:
+        friendlyName: "클라이언트 ID"
+        description: "GitHub OAuth 앱의 클라이언트 ID입니다. GitHub Developer Settings > OAuth Apps에서 확인할 수 있습니다."
+      zh-CN:
+        friendlyName: "客户端 ID"
+        description: "GitHub OAuth 应用的客户端 ID。可在 GitHub Developer Settings > OAuth Apps 中找到。"
     sensitive: false
   - name: "OBOT_GITHUB_AUTH_PROVIDER_CLIENT_SECRET"
     friendlyName: "Client Secret"
     description: "Client secret for your GitHub OAuth app. Can be found in GitHub Developer Settings > OAuth Apps"
+    locales:
+      ja:
+        friendlyName: "クライアントシークレット"
+        description: "GitHub OAuth アプリのクライアントシークレット。GitHub Developer Settings > OAuth Apps で確認できます。"
+      ko:
+        friendlyName: "클라이언트 보안 비밀"
+        description: "GitHub OAuth 앱의 클라이언트 보안 비밀입니다. GitHub Developer Settings > OAuth Apps에서 확인할 수 있습니다."
+      zh-CN:
+        friendlyName: "客户端密钥"
+        description: "GitHub OAuth 应用的客户端密钥。可在 GitHub Developer Settings > OAuth Apps 中找到。"
     sensitive: true
   - name: "OBOT_AUTH_PROVIDER_COOKIE_SECRET"
     friendlyName: "Cookie Secret"
     description: "Secret used to encrypt cookies. Must be a random string of length 16, 24, or 32."
+    locales:
+      ja:
+        friendlyName: "Cookie シークレット"
+        description: "Cookie の暗号化に使用するシークレット。長さが 16、24、または 32 文字のランダムな文字列にしてください。"
+      ko:
+        friendlyName: "쿠키 보안 비밀"
+        description: "쿠키 암호화에 사용하는 보안 비밀입니다. 길이가 16, 24 또는 32인 임의 문자열이어야 합니다."
+      zh-CN:
+        friendlyName: "Cookie 密钥"
+        description: "用于加密 Cookie 的密钥。必须是长度为 16、24 或 32 的随机字符串。"
     sensitive: true
     hidden: true
   - name: "OBOT_AUTH_PROVIDER_EMAIL_DOMAINS"
     friendlyName: "Allowed E-Mail Domains"
     description: "A list of email domains that are allowed to authenticate with this provider. * is a special value that allows all domains."
+    locales:
+      ja:
+        friendlyName: "許可するメールドメイン"
+        description: "このプロバイダーで認証を許可するメールドメインの一覧です。* を指定するとすべてのドメインを許可します。"
+      ko:
+        friendlyName: "허용할 이메일 도메인"
+        description: "이 공급자로 인증할 수 있는 이메일 도메인 목록입니다. *를 지정하면 모든 도메인을 허용합니다."
+      zh-CN:
+        friendlyName: "允许的电子邮件域名"
+        description: "允许通过此提供方进行身份验证的电子邮件域名列表。* 表示允许所有域名。"
     sensitive: false
 optionalConfigurationParameters:
   - name: "OBOT_AUTH_PROVIDER_POSTGRES_CONNECTION_DSN"
     friendlyName: "PostgreSQL connection string (DSN)"
     description: "The connection string for a PostgreSQL database to use for session storage. If unset, cookies will be used for session storage instead."
+    locales:
+      ja:
+        friendlyName: "PostgreSQL 接続文字列 (DSN)"
+        description: "セッション保存に使用する PostgreSQL データベースの接続文字列です。未設定の場合は Cookie にセッションを保存します。"
+      ko:
+        friendlyName: "PostgreSQL 연결 문자열(DSN)"
+        description: "세션 저장에 사용할 PostgreSQL 데이터베이스 연결 문자열입니다. 설정하지 않으면 쿠키에 세션을 저장합니다."
+      zh-CN:
+        friendlyName: "PostgreSQL 连接字符串 (DSN)"
+        description: "用于存储会话的 PostgreSQL 数据库连接字符串。未设置时改用 Cookie 存储会话。"
     sensitive: true
     hidden: true
   - name: "OBOT_AUTH_PROVIDER_POSTGRES_MAX_CONNECTIONS"
     friendlyName: "PostgreSQL max connections"
     description: "The maximum number of open connections to the PostgreSQL database."
+    locales:
+      ja:
+        friendlyName: "PostgreSQL 最大接続数"
+        description: "PostgreSQL データベースへの最大オープン接続数です。"
+      ko:
+        friendlyName: "PostgreSQL 최대 연결 수"
+        description: "PostgreSQL 데이터베이스의 최대 열린 연결 수입니다."
+      zh-CN:
+        friendlyName: "PostgreSQL 最大连接数"
+        description: "PostgreSQL 数据库允许的最大打开连接数。"
     sensitive: false
     hidden: true
   - name: "OBOT_AUTH_PROVIDER_POSTGRES_MAX_IDLE_CONNECTIONS"
     friendlyName: "PostgreSQL max idle connections"
     description: "The maximum number of idle connections to the PostgreSQL database."
+    locales:
+      ja:
+        friendlyName: "PostgreSQL 最大アイドル接続数"
+        description: "PostgreSQL データベースへの最大アイドル接続数です。"
+      ko:
+        friendlyName: "PostgreSQL 최대 유휴 연결 수"
+        description: "PostgreSQL 데이터베이스의 최대 유휴 연결 수입니다."
+      zh-CN:
+        friendlyName: "PostgreSQL 最大空闲连接数"
+        description: "PostgreSQL 数据库允许的最大空闲连接数。"
     sensitive: false
     hidden: true
   - name: "OBOT_AUTH_PROVIDER_POSTGRES_CONNECTION_LIFETIME_SECONDS"
     friendlyName: "PostgreSQL connection lifetime"
     description: "The maximum lifetime of a connection to the PostgreSQL database."
+    locales:
+      ja:
+        friendlyName: "PostgreSQL 接続の有効期間"
+        description: "PostgreSQL データベース接続の最大有効期間です。"
+      ko:
+        friendlyName: "PostgreSQL 연결 수명"
+        description: "PostgreSQL 데이터베이스 연결의 최대 수명입니다."
+      zh-CN:
+        friendlyName: "PostgreSQL 连接生存时间"
+        description: "PostgreSQL 数据库连接的最长生存时间。"
     sensitive: false
     hidden: true
   - name: "OBOT_AUTH_PROVIDER_TOKEN_REFRESH_DURATION"
     friendlyName: "Token Refresh Duration"
     description: "Time to wait before attempting to refresh auth tokens. Should be in a format like 1h1m1s. Default: 1h"
+    locales:
+      ja:
+        friendlyName: "トークン更新間隔"
+        description: "認証トークンの更新を試みるまでの待機時間です。1h1m1s のような形式で指定します。既定値: 1h"
+      ko:
+        friendlyName: "토큰 갱신 간격"
+        description: "인증 토큰 갱신을 시도하기 전 대기 시간입니다. 1h1m1s와 같은 형식으로 지정합니다. 기본값: 1h"
+      zh-CN:
+        friendlyName: "令牌刷新间隔"
+        description: "尝试刷新身份验证令牌前的等待时间。格式如 1h1m1s。默认值：1h"
     sensitive: false
   - name: "OBOT_GITHUB_AUTH_PROVIDER_ORG"
     friendlyName: "Allowed GitHub Organization"
     description: "Restrict logins to members of this GitHub organization."
+    locales:
+      ja:
+        friendlyName: "許可する GitHub 組織"
+        description: "この GitHub 組織のメンバーにログインを制限します。"
+      ko:
+        friendlyName: "허용할 GitHub 조직"
+        description: "이 GitHub 조직의 구성원으로 로그인을 제한합니다."
+      zh-CN:
+        friendlyName: "允许的 GitHub 组织"
+        description: "仅允许此 GitHub 组织的成员登录。"
     sensitive: false
   - name: "OBOT_GITHUB_AUTH_PROVIDER_ALLOW_USERS"
     friendlyName: "Allowed GitHub Users"
     description: "A list of GitHub users allowed to log in, even if they do not belong to the specified org."
+    locales:
+      ja:
+        friendlyName: "許可する GitHub ユーザー"
+        description: "指定した組織に所属していなくてもログインを許可する GitHub ユーザーの一覧です。"
+      ko:
+        friendlyName: "허용할 GitHub 사용자"
+        description: "지정한 조직에 속하지 않아도 로그인할 수 있는 GitHub 사용자 목록입니다."
+      zh-CN:
+        friendlyName: "允许的 GitHub 用户"
+        description: "即使不属于指定组织也允许登录的 GitHub 用户列表。"
     sensitive: false
   - name: "OBOT_AUTH_PROVIDER_ENABLE_LOGGING"
     friendlyName: "Enable Logging"
     description: "Set to true to enable request, auth, and standard logging for the auth provider. Default: false"
+    locales:
+      ja:
+        friendlyName: "ログ記録を有効化"
+        description: "true にすると認証プロバイダーのリクエスト、認証、標準ログを有効にします。既定値: false"
+      ko:
+        friendlyName: "로깅 활성화"
+        description: "true로 설정하면 인증 공급자의 요청, 인증 및 표준 로깅을 활성화합니다. 기본값: false"
+      zh-CN:
+        friendlyName: "启用日志记录"
+        description: "设为 true 可启用身份验证提供方的请求、身份验证和标准日志。默认值：false"
     sensitive: false
 postgresTablePrefix: "github_"

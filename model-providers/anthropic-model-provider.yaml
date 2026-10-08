@@ -4,10 +4,30 @@ validateArgs:
   - "validate"
 icon: "/admin/assets/anthropic_icon.svg"
 description: "Note: Anthropic does not have an embeddings model and [recommends](https://docs.anthropic.com/en/docs/build-with-claude/embeddings) Voyage AI."
+locales:
+  ja:
+    name: "Anthropic"
+    description: "注: Anthropic は埋め込みモデルを提供しておらず、[Voyage AI を推奨しています](https://docs.anthropic.com/en/docs/build-with-claude/embeddings)。"
+  ko:
+    name: "Anthropic"
+    description: "참고: Anthropic은 임베딩 모델을 제공하지 않으며 [Voyage AI를 권장합니다](https://docs.anthropic.com/en/docs/build-with-claude/embeddings)."
+  zh-CN:
+    name: "Anthropic"
+    description: "注意：Anthropic 不提供嵌入模型，并[推荐使用 Voyage AI](https://docs.anthropic.com/en/docs/build-with-claude/embeddings)。"
 link: "https://www.anthropic.com"
 requiredConfigurationParameters:
   - name: "OBOT_ANTHROPIC_MODEL_PROVIDER_API_KEY"
     friendlyName: "API Key"
     description: "Anthropic API Key"
+    locales:
+      ja:
+        friendlyName: "API キー"
+        description: "Anthropic API キー"
+      ko:
+        friendlyName: "API 키"
+        description: "Anthropic API 키"
+      zh-CN:
+        friendlyName: "API 密钥"
+        description: "Anthropic API 密钥"
     sensitive: true
 dialect: "AnthropicMessages"

@@ -5,15 +5,45 @@ validateArgs:
 icon: "/admin/assets/obot_openai_antenna_icon.png"
 iconDark: "/admin/assets/obot_openai_antenna_icon.png"
 description: "Model Provider for generic [Responses API compatible](https://www.openresponses.org) model providers, like [Ollama](https://ollama.com/) (`http://127.0.0.1:11434/v1`), LiteLLM, etc."
+locales:
+  ja:
+    name: "Responses 互換の汎用プロバイダー"
+    description: "[Responses API 互換](https://www.openresponses.org)のモデルプロバイダー向けです。[Ollama](https://ollama.com/) (`http://127.0.0.1:11434/v1`) や LiteLLM などに対応します。"
+  ko:
+    name: "Responses 호환 범용 공급자"
+    description: "[Responses API 호환](https://www.openresponses.org) 모델 공급자용입니다. [Ollama](https://ollama.com/) (`http://127.0.0.1:11434/v1`), LiteLLM 등을 지원합니다."
+  zh-CN:
+    name: "兼容 Responses 的通用提供方"
+    description: "适用于[兼容 Responses API](https://www.openresponses.org) 的模型提供方，例如 [Ollama](https://ollama.com/) (`http://127.0.0.1:11434/v1`)、LiteLLM 等。"
 link: "https://www.openresponses.org"
 requiredConfigurationParameters:
   - name: "OBOT_GENERIC_RESPONSES_MODEL_PROVIDER_BASE_URL"
     friendlyName: "Base URL"
     description: "Base URL for the OpenAI Responses-compatible API (e.g. http://127.0.0.1:11434/v1 for Ollama)."
+    locales:
+      ja:
+        friendlyName: "ベース URL"
+        description: "OpenAI Responses 互換 API のベース URL です（例: Ollama の http://127.0.0.1:11434/v1）。"
+      ko:
+        friendlyName: "기본 URL"
+        description: "OpenAI Responses 호환 API의 기본 URL입니다(예: Ollama의 http://127.0.0.1:11434/v1)."
+      zh-CN:
+        friendlyName: "基础 URL"
+        description: "兼容 OpenAI Responses 的 API 的基础 URL（例如 Ollama 的 http://127.0.0.1:11434/v1）。"
     sensitive: false
 optionalConfigurationParameters:
   - name: "OBOT_GENERIC_RESPONSES_MODEL_PROVIDER_API_KEY"
     friendlyName: "API Key"
     description: "API Key for the OpenAI Responses-compatible API. Some providers like Ollama don't enforce Authentication, so this is optional."
+    locales:
+      ja:
+        friendlyName: "API キー"
+        description: "OpenAI Responses 互換 API の API キーです。Ollama など認証を要求しないプロバイダーでは省略できます。"
+      ko:
+        friendlyName: "API 키"
+        description: "OpenAI Responses 호환 API의 API 키입니다. Ollama처럼 인증을 요구하지 않는 공급자에서는 생략할 수 있습니다."
+      zh-CN:
+        friendlyName: "API 密钥"
+        description: "兼容 OpenAI Responses 的 API 的 API 密钥。Ollama 等不要求身份验证的提供方可不填写。"
     sensitive: true
 dialect: "OpenResponses"
