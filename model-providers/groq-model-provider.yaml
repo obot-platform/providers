@@ -4,9 +4,29 @@ validateArgs:
   - validate
 icon: "/admin/assets/groq_logo.svg"
 description: "Model provider for models running on Groq"
+locales:
+  ja:
+    name: "Groq"
+    description: "Groq で実行されるモデルのプロバイダー"
+  ko:
+    name: "Groq"
+    description: "Groq에서 실행되는 모델 공급자"
+  zh-CN:
+    name: "Groq"
+    description: "在 Groq 上运行的模型提供方"
 link: "https://groq.com/"
 requiredConfigurationParameters:
   - name: "OBOT_GROQ_MODEL_PROVIDER_API_KEY"
     friendlyName: "API Key"
     description: "Groq API Key. Can be created and fetched from https://console.groq.com/keys"
+    locales:
+      ja:
+        friendlyName: "API キー"
+        description: "Groq API キー。https://console.groq.com/keys で作成、取得できます。"
+      ko:
+        friendlyName: "API 키"
+        description: "Groq API 키입니다. https://console.groq.com/keys 에서 생성하고 확인할 수 있습니다."
+      zh-CN:
+        friendlyName: "API 密钥"
+        description: "Groq API 密钥。可在 https://console.groq.com/keys 创建和获取。"
     sensitive: true

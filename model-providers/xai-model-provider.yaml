@@ -4,9 +4,29 @@ validateArgs:
   - validate
 icon: "/admin/assets/xai-logo.svg"
 description: "Model Provider for xAI"
+locales:
+  ja:
+    name: "xAI"
+    description: "xAI のモデルプロバイダー"
+  ko:
+    name: "xAI"
+    description: "xAI 모델 공급자"
+  zh-CN:
+    name: "xAI"
+    description: "xAI 模型提供方"
 link: "https://x.ai/"
 requiredConfigurationParameters:
   - name: "OBOT_XAI_MODEL_PROVIDER_API_KEY"
     friendlyName: "API Key"
     description: "xAI API Key"
+    locales:
+      ja:
+        friendlyName: "API キー"
+        description: "xAI API キー"
+      ko:
+        friendlyName: "API 키"
+        description: "xAI API 키"
+      zh-CN:
+        friendlyName: "API 密钥"
+        description: "xAI API 密钥"
     sensitive: true

@@ -4,10 +4,30 @@ validateArgs:
   - validate
 icon: "https://ollama.com/public/ollama.png"
 description: "Model provider for models running on Ollama"
+locales:
+  ja:
+    name: "Ollama"
+    description: "Ollama で実行されるモデルのプロバイダー"
+  ko:
+    name: "Ollama"
+    description: "Ollama에서 실행되는 모델 공급자"
+  zh-CN:
+    name: "Ollama"
+    description: "在 Ollama 上运行的模型提供方"
 link: "https://ollama.com/"
 requiredConfigurationParameters:
   - name: "OBOT_OLLAMA_MODEL_PROVIDER_HOST"
     friendlyName: "Host"
     description: "Ollama Server Address (e.g. my.ollama.local:11434)"
+    locales:
+      ja:
+        friendlyName: "ホスト"
+        description: "Ollama サーバーのアドレス（例: my.ollama.local:11434）。"
+      ko:
+        friendlyName: "호스트"
+        description: "Ollama 서버 주소입니다(예: my.ollama.local:11434)."
+      zh-CN:
+        friendlyName: "主机"
+        description: "Ollama 服务器地址（例如 my.ollama.local:11434）。"
     sensitive: false
 dialect: "OpenResponses"

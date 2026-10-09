@@ -5,14 +5,44 @@ validateArgs:
 icon: "/admin/assets/obot_openai_antenna_icon.png"
 iconDark: "/admin/assets/obot_openai_antenna_icon.png"
 description: "Model Provider for generic [OpenAI API compatible](https://platform.openai.com/docs/api-reference/introduction) model providers, like LM-Studio, Ollama, vLLM, etc."
+locales:
+  ja:
+    name: "OpenAI 互換の汎用プロバイダー"
+    description: "LM Studio、Ollama、vLLM など、[OpenAI API 互換](https://platform.openai.com/docs/api-reference/introduction)のモデルプロバイダー向けです。"
+  ko:
+    name: "OpenAI 호환 범용 공급자"
+    description: "LM Studio, Ollama, vLLM 등 [OpenAI API 호환](https://platform.openai.com/docs/api-reference/introduction) 모델 공급자용입니다."
+  zh-CN:
+    name: "兼容 OpenAI 的通用提供方"
+    description: "适用于 LM Studio、Ollama、vLLM 等[兼容 OpenAI API](https://platform.openai.com/docs/api-reference/introduction) 的模型提供方。"
 link: "https://platform.openai.com/docs/api-reference/introduction"
 requiredConfigurationParameters:
   - name: "OBOT_GENERIC_OPENAI_MODEL_PROVIDER_BASE_URL"
     friendlyName: "Base URL"
     description: "Base URL for the OpenAI-compatible API, e.g. http://localhost:1234/v1 for LM-Studio."
+    locales:
+      ja:
+        friendlyName: "ベース URL"
+        description: "OpenAI 互換 API のベース URL です（例: LM Studio の http://localhost:1234/v1）。"
+      ko:
+        friendlyName: "기본 URL"
+        description: "OpenAI 호환 API의 기본 URL입니다(예: LM Studio의 http://localhost:1234/v1)."
+      zh-CN:
+        friendlyName: "基础 URL"
+        description: "兼容 OpenAI 的 API 的基础 URL（例如 LM Studio 的 http://localhost:1234/v1）。"
     sensitive: false
 optionalConfigurationParameters:
   - name: "OBOT_GENERIC_OPENAI_MODEL_PROVIDER_API_KEY"
     friendlyName: "API Key"
     description: "API Key for the OpenAI-compatible API. Some providers like Ollama don't enforce Authentication, so this is optional."
+    locales:
+      ja:
+        friendlyName: "API キー"
+        description: "OpenAI 互換 API の API キーです。Ollama など認証を要求しないプロバイダーでは省略できます。"
+      ko:
+        friendlyName: "API 키"
+        description: "OpenAI 호환 API의 API 키입니다. Ollama처럼 인증을 요구하지 않는 공급자에서는 생략할 수 있습니다."
+      zh-CN:
+        friendlyName: "API 密钥"
+        description: "兼容 OpenAI 的 API 的 API 密钥。Ollama 等不要求身份验证的提供方可不填写。"
     sensitive: true

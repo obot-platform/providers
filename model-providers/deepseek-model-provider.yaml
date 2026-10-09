@@ -5,9 +5,29 @@ validateArgs:
 icon: "/admin/assets/deepseek-logo.svg"
 iconDark: "/admin/assets/deepseek-logo.svg"
 description: "Model Provider for DeepSeek"
+locales:
+  ja:
+    name: "DeepSeek"
+    description: "DeepSeek のモデルプロバイダー"
+  ko:
+    name: "DeepSeek"
+    description: "DeepSeek 모델 공급자"
+  zh-CN:
+    name: "DeepSeek"
+    description: "DeepSeek 模型提供方"
 link: "https://www.deepseek.com/"
 requiredConfigurationParameters:
   - name: "OBOT_DEEPSEEK_MODEL_PROVIDER_API_KEY"
     friendlyName: "API Key"
     description: "DeepSeek API Key. Can be created and fetched from https://platform.deepseek.com/api_keys"
+    locales:
+      ja:
+        friendlyName: "API キー"
+        description: "DeepSeek API キー。https://platform.deepseek.com/api_keys で作成、取得できます。"
+      ko:
+        friendlyName: "API 키"
+        description: "DeepSeek API 키입니다. https://platform.deepseek.com/api_keys 에서 생성하고 확인할 수 있습니다."
+      zh-CN:
+        friendlyName: "API 密钥"
+        description: "DeepSeek API 密钥。可在 https://platform.deepseek.com/api_keys 创建和获取。"
     sensitive: true
