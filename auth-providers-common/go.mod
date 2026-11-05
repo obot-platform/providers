@@ -2,7 +2,7 @@ module github.com/obot-platform/providers/auth-providers-common
 
 go 1.27
 
-replace github.com/oauth2-proxy/oauth2-proxy/v7 => github.com/obot-platform/oauth2-proxy/v7 v7.0.0-20261104175339-03f2911511be
+replace github.com/oauth2-proxy/oauth2-proxy/v7 => github.com/obot-platform/oauth2-proxy/v7 v7.0.0-20261104192726-1bcd85bfb49e
 
 require github.com/oauth2-proxy/oauth2-proxy/v7 v7.8.1
 
