@@ -1,9 +1,9 @@
-
 # Dependabot dependency ownership
 /anthropic-model-provider/go.mod @obot-platform/obot-backend
 /anthropic-model-provider/go.sum @obot-platform/obot-backend
 /auth-providers-common/go.mod @obot-platform/obot-backend
 /auth-providers-common/go.sum @obot-platform/obot-backend
+/databricks-model-provider/go.mod @obot-platform/obot-backend
 /deepseek-model-provider/go.mod @obot-platform/obot-backend
 /deepseek-model-provider/go.sum @obot-platform/obot-backend
 /generic-openai-model-provider/go.mod @obot-platform/obot-backend
