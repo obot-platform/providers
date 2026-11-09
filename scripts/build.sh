@@ -10,6 +10,9 @@ while IFS= read -r -d '' maingo; do
     if [ "$(basename "$(dirname "$maingo")")" = common ]; then
         continue
     fi
+    case "$maingo" in
+        */hack/*) continue ;; # developer tooling, not a provider
+    esac
     (
         cd "$(dirname "$maingo")"
         echo "Building $PWD"
